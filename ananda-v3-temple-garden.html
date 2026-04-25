@@ -186,8 +186,8 @@ nav.scrolled {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background:
-    radial-gradient(ellipse at top left, var(--sage-bg) 0%, transparent 60%),
-    radial-gradient(ellipse at bottom right, rgba(230,184,164,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at top left, var(--pink-bg) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(217,139,131,0.18) 0%, transparent 60%),
     var(--ivoire);
   position: relative;
   overflow: hidden;
@@ -195,42 +195,95 @@ nav.scrolled {
 .hero-copy {
   display: flex;
   align-items: center;
-  padding: 3rem 4rem 3rem 5rem;
+  padding: 3rem 3.5rem 3rem 4rem;
   position: relative;
   z-index: 2;
+  min-width: 0;
 }
 .hero-copy-inner {
   max-width: 540px;
+  width: 100%;
   animation: heroFade 1.6s ease-out;
 }
-.hero-copy .eyebrow { color: var(--sage-deep); }
+.hero-copy .eyebrow {
+  color: var(--maroon);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+  display: inline-block;
+}
 .hero h1 {
-  font-size: clamp(2.8rem, 5.2vw, 4.6rem);
+  font-size: clamp(2.4rem, 4.6vw, 4rem);
   font-weight: 400;
-  line-height: 1.08;
-  margin-bottom: 1.6rem;
+  line-height: 1.05;
+  margin-bottom: 1.4rem;
   color: var(--ink);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  font-family: 'DM Serif Display', serif;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
 .hero h1 em {
   font-style: italic;
-  color: var(--terracotta);
+  color: var(--pink-mid);
   font-weight: 400;
 }
 .hero p.lead {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--ink-sub);
-  line-height: 1.75;
-  margin-bottom: 2.4rem;
+  line-height: 1.7;
+  margin-bottom: 2.2rem;
   font-weight: 400;
+  max-width: 480px;
 }
-.hero-ctas { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.hero-ctas { display: flex; gap: 0.7rem; flex-wrap: wrap; }
 
-/* Right visual — contains the video / photo */
+/* Hero badges (stats inline below CTAs) */
+.hero-badges {
+  display: flex;
+  gap: 2.4rem;
+  margin-top: 2.6rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.hero-badge { display: flex; flex-direction: column; font-size: 0.74rem; }
+.hero-badge strong {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.7rem;
+  color: var(--maroon);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+}
+.hero-badge span {
+  color: var(--ink-muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+/* Right visual — contains the video */
 .hero-visual {
   position: relative;
   overflow: hidden;
-  background: var(--sage-bg);
+  background:
+    linear-gradient(135deg, var(--pink-soft) 0%, var(--maroon-soft) 100%),
+    url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1400&q=85&auto=format&fit=crop') center/cover;
+  background-blend-mode: multiply;
+}
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1400&q=85&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center 35%;
+  z-index: 0;
 }
 .hero-video {
   position: absolute;
@@ -238,7 +291,7 @@ nav.scrolled {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 35%;
   z-index: 1;
 }
 .hero-visual::after {
@@ -247,8 +300,9 @@ nav.scrolled {
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(90deg, rgba(244,241,232,0.25) 0%, transparent 25%),
-    linear-gradient(180deg, transparent 65%, rgba(45,42,36,0.2) 100%);
+    linear-gradient(90deg, var(--ivoire) 0%, transparent 18%),
+    linear-gradient(180deg, transparent 70%, rgba(45,26,30,0.18) 100%);
+  pointer-events: none;
 }
 
 .btn {
